@@ -1,0 +1,11 @@
+<h1>Weather Forecasts</h1>
+
+<ul *ngIf="forecasts$ | async as forecasts">
+  <li *ngFor="let forecast of forecasts">
+    {{ forecast.date | date }}: {{ forecast.temperatureC }}°C / {{ forecast.temperatureF }}°F - {{ forecast.summary}}
+  </li>
+</ul>
+
+<ng-container>
+
+</ng-container>
