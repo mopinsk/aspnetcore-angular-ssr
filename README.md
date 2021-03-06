@@ -13,3 +13,7 @@ ng new ng-client --directory=ng-client --routing --skip-git --strict --style=scs
 ```
 
 Follow the instructions described in the official Angular Universal docs: https://angular.io/guide/universal
+
+```
+ng add @nguniversal/express-engine
+```
