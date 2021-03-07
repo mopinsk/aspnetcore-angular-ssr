@@ -36,7 +36,7 @@ jobs:
         run: npm run build:ssr
         working-directory: ./ng-client
       - name: Copy Angular files
-        run: cp ./ng-client/dist ./dist
+        run: cp -r ./ng-client/dist ./dist
       - name: Move server/main.js up one level
         run: mv ./dist/server/main.js ./dist/main.js
       - name: Remove server directory
