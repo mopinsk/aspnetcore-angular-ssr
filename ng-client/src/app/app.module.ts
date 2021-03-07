@@ -12,7 +12,7 @@ const getBaseUrl = () => {
   if (!environment.production) {
     return environment.baseUrl;
   }
-  return window.location.origin;
+  return window.location.origin + '/webapi';
 };
 
 @NgModule({
