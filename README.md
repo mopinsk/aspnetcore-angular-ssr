@@ -64,3 +64,19 @@ const getBaseUrl = () => {
   return window.location.origin + '/webapi';
 };
 ```
+
+# Azure
+
+Create an Azure App Service (Web App) with Stack ".NET 5"
+
+Go to _Configuration_ and add this _application setting_:
+
+- Key: WEBSITE_NODE_DEFAULT_VERSION
+- Value: ~12
+
+Add/Edit Path Mappings:
+
+| Virtual Path | Physical Path          | Type        |
+| ------------ | ---------------------- | ----------- |
+| /            | site\wwwroot\ng-client | Application |
+| /webapi      | site\wwwroot\webapi    | Application |

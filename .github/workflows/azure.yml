@@ -41,6 +41,8 @@ jobs:
         run: cp -r ./ng-client/dist/ng-client/browser ./dist/ng-client/browser
       - name: Copy server/main.js
         run: cp ./ng-client/dist/ng-client/server/main.js ./dist/ng-client/main.js
+      - name: Copy Angular client web.config
+        run: cp ./ng-client/web.config ./dist/ng-client/web.config
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.2.2
         with:
