@@ -38,9 +38,9 @@ jobs:
       - name: Copy Angular files
         run: cp ./ng-client/dist ./dist
       - name: Move server/main.js up one level
-        run: mv ./ng-client/dist/server/main.js ./ng-client/dist/main.js
+        run: mv ./dist/server/main.js ./dist/main.js
       - name: Remove server directory
-        run: rm -r -f ./ng-client/dist/server
+        run: rm -r -f ./dist/server
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.2.2
         with:
