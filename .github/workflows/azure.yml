@@ -35,12 +35,12 @@ jobs:
       - name: Build Angular App
         run: npm run build:ssr
         working-directory: ./ng-client
+      - name: Create directory for Angular files
+        run: mkdir -p ./dist/ng-client
       - name: Copy Angular files
-        run: cp -r ./ng-client/dist ./dist
-      - name: Move server/main.js up one level
-        run: mv ./dist/server/main.js ./dist/main.js
-      - name: Remove server directory
-        run: rm -r -f ./dist/server
+        run: cp -r ./ng-client/dist/ng-client/browser ./dist/ng-client/browser
+      - name: Copy server/main.js
+        run: cp ./ng-client/dist/ng-client/server/main.js ./dist/ng-client/main.js
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.2.2
         with:
