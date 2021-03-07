@@ -1,6 +1,10 @@
 # aspnetcore-angular-ssr
 
-A simple ASP.NET Core Web API and Angular Client with server-side rendering
+A simple ASP.NET Core Web API and Angular Client with server-side rendering.
+
+- The default Angular route displays the _WeatherForecastListComponent_.
+- This route gets its data via the _WeatherForecastResolver_.
+- The resolver uses the _WeatherForecastService_ which makes the HTTP request to the Web API
 
 # Angular Client
 
@@ -75,6 +79,8 @@ HTTPS redirection is disabled in ASP.NET Core, otherwise HTTP requests in SSR de
 # Azure
 
 Create an Azure App Service (Web App) with Stack ".NET 5"
+
+Go To _TLS/SSL Settings_ and enable "HTTPS Only"
 
 Go to _Configuration_ and add this _application setting_:
 

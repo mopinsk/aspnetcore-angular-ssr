@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'http://localhost:5000',
+  baseUrl: 'https://aspnetcore-angular-ssr.azurewebsites.net/webapi', // put your own app service / Web API URL here
 };
