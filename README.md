@@ -53,17 +53,24 @@ The Web API runs on IIS Express when started in Visual Studio 2019: (as stated i
 - https://localhost:44398
 
 The Angular app uses the value from environment.ts as the base URL for HTTP requests in development mode.
-In production mode it uses the origin of the document + '/webapi', because that's where the Web API will be hosted.
+In production mode it uses the location of the Angular app + '/webapi', because that's where the Web API will be hosted.
 
 ```ts
 // app.module.ts
-const getBaseUrl = () => {
-  if (!environment.production) {
-    return environment.baseUrl;
+/**
+ * Factory function for the Web API Base URL
+ * @param location Angular Location
+ */
+const getBaseUrl = (location: Location) => {
+  let baseUrl = environment.baseUrl;
+  if (environment.production) {
+    baseUrl = location.prepareExternalUrl('/webapi');
   }
-  return window.location.origin + '/webapi';
+  return baseUrl;
 };
 ```
+
+HTTPS redirection is disabled in ASP.NET Core, otherwise HTTP requests in SSR development mode will fail.
 
 # Azure
 

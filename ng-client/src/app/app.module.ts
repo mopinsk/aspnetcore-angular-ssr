@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -8,11 +9,16 @@ import { AppComponent } from './app.component';
 import { BASE_API_URL } from './tokens';
 import { WeatherForecastListComponent } from './weather-forecast-list/weather-forecast-list.component';
 
-const getBaseUrl = () => {
-  if (!environment.production) {
-    return environment.baseUrl;
+/**
+ * Factory function for the Web API Base URL
+ * @param location Angular Location
+ */
+const getBaseUrl = (location: Location) => {
+  let baseUrl = environment.baseUrl;
+  if (environment.production) {
+    baseUrl = location.prepareExternalUrl('/webapi');
   }
-  return window.location.origin + '/webapi';
+  return baseUrl;
 };
 
 @NgModule({
@@ -23,7 +29,13 @@ const getBaseUrl = () => {
     TransferHttpCacheModule,
     AppRoutingModule,
   ],
-  providers: [{ provide: BASE_API_URL, useFactory: getBaseUrl }],
+  providers: [
+    {
+      provide: BASE_API_URL,
+      useFactory: getBaseUrl,
+      deps: [Location],
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
